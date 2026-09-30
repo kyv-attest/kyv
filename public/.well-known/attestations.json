@@ -1,0 +1,62 @@
+{
+  "kyv": "0",
+  "subject": "foundr.ventures",
+  "keys": [
+    {
+      "id": "foundr-2026-09-30",
+      "alg": "Ed25519",
+      "public_key_der_b64": "MCowBQYDK2VwAyEAOpj8f0AW1GC3tKCnpN2sM6Bcqh6BHSSZRf3HlVHA7Rw="
+    }
+  ],
+  "attestations": [
+    {
+      "subject": "foundr.ventures",
+      "alive_since": "2026-09-03",
+      "last_verified": "2026-09-30T00:00:00Z",
+      "continuity": {
+        "months": 0,
+        "gaps": 0
+      },
+      "valid_from": "2026-09-30T00:00:00Z",
+      "valid_until": "2026-10-14T00:00:00Z",
+      "issuer": "foundr.ventures",
+      "witness": "self",
+      "level": 1,
+      "signature": "OC9ntTQxdc8j+SgQNMu2+pHTGKO56n4t5p4P5bAU1/crhjPlodOaTGX2DexWIkKQY9PR51DHrjmFqJW3ATzgCQ==",
+      "log_inclusion": {
+        "log": "kyv-attest/log",
+        "date": "2026-09-30",
+        "leaf_index": 0,
+        "proof": [
+          "da67cf98a290933d049a2566f2643d2bd3aeab76bf2bb821c61fddadbf3ab965"
+        ]
+      }
+    },
+    {
+      "subject": "foundr.ventures",
+      "alive_since": "2026-09-03",
+      "last_verified": "2026-09-30T00:00:00Z",
+      "continuity": {
+        "months": 0,
+        "gaps": 0
+      },
+      "valid_from": "2026-09-30T00:00:00Z",
+      "valid_until": "2026-10-14T00:00:00Z",
+      "issuer": "foundr.ventures",
+      "witness": "issuer",
+      "level": 2,
+      "bands": {
+        "mrr_usd": "<1000"
+      },
+      "signature": "ZKVrlZz+AE3Zg9ojcnF51WmkHXbI0tfSnqXaXzSCnO52+zOGEfEfXX7St1tYMPn7TVzlyBe5j3avgHnjYSxLDw==",
+      "log_inclusion": {
+        "log": "kyv-attest/log",
+        "date": "2026-09-30",
+        "leaf_index": 1,
+        "proof": [
+          "d3e61342cace001d3019a30cfa50a88b372bada772a336df999370895290738f"
+        ]
+      }
+    }
+  ]
+}

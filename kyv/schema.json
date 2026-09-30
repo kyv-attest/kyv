@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://foundr.ventures/kyv/schema.json",
+  "title": "kyv-attest well-known document (v0)",
+  "description": "Signed, banded, machine-verifiable operational facts about a company. Published at /.well-known/attestations.json. Bands only — raw values are non-conforming at every level. Absence of this document NEVER means negative.",
+  "type": "object",
+  "required": ["kyv", "subject", "keys", "attestations"],
+  "additionalProperties": false,
+  "properties": {
+    "kyv": { "const": "0" },
+    "subject": { "type": "string", "minLength": 1, "description": "Domain the document is about" },
+    "keys": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "alg", "public_key_der_b64"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "alg": { "const": "Ed25519" },
+          "public_key_der_b64": { "type": "string", "minLength": 1, "description": "SPKI DER, base64" }
+        }
+      }
+    },
+    "attestations": { "type": "array", "items": { "$ref": "#/$defs/attestation" } }
+  },
+  "$defs": {
+    "band": {
+      "type": "string",
+      "pattern": "^(>=\\d+(\\.\\d+)?|<\\d+(\\.\\d+)?|\\d+(\\.\\d+)?-\\d+(\\.\\d+)?)$",
+      "description": "Spec §7 vocabulary: >=N | <N | N-M. Raw values are non-conforming."
+    },
+    "attestation": {
+      "type": "object",
+      "required": ["subject", "issuer", "witness", "level", "valid_from", "valid_until", "signature"],
+      "additionalProperties": false,
+      "properties": {
+        "subject": { "type": "string", "minLength": 1 },
+        "issuer": { "type": "string", "minLength": 1 },
+        "witness": { "enum": ["observed", "self", "issuer"] },
+        "level": { "enum": [0, 1, 2, 3] },
+        "alive_since": { "type": "string", "format": "date" },
+        "last_verified": { "type": "string", "format": "date-time" },
+        "continuity": {
+          "type": "object",
+          "required": ["months", "gaps"],
+          "additionalProperties": false,
+          "properties": {
+            "months": { "type": "integer", "minimum": 0 },
+            "gaps": { "type": "integer", "minimum": 0, "description": "a gap = a missed daily log entry" }
+          }
+        },
+        "bands": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "$ref": "#/$defs/band" }
+        },
+        "valid_from": { "type": "string", "format": "date-time" },
+        "valid_until": { "type": "string", "format": "date-time", "description": "short TTL; broken sync => expiry" },
+        "log_inclusion": {
+          "type": "object",
+          "required": ["log", "date", "leaf_index", "proof"],
+          "additionalProperties": false,
+          "properties": {
+            "log": { "type": "string", "minLength": 1 },
+            "date": { "type": "string", "format": "date" },
+            "leaf_index": { "type": "integer", "minimum": 0 },
+            "proof": { "type": "array", "items": { "type": "string", "pattern": "^[0-9a-f]{64}$" } }
+          }
+        },
+        "signature": {
+          "type": "string",
+          "minLength": 1,
+          "description": "base64 Ed25519 over canonical JSON of the attestation without `signature` and without `log_inclusion`"
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "level": { "enum": [1, 2, 3] } } },
+          "then": { "required": ["alive_since", "last_verified", "continuity"] }
+        },
+        {
+          "if": { "properties": { "level": { "enum": [2, 3] } } },
+          "then": { "required": ["bands"] }
+        },
+        {
+          "if": { "properties": { "witness": { "const": "self" } } },
+          "then": { "properties": {}, "$comment": "issuer must equal subject — enforced by the library; JSON Schema cannot compare fields" }
+        }
+      ]
+    }
+  }
+}

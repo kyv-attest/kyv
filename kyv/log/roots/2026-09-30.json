@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-30",
+  "algo": "sha256-merkle-v0",
+  "leaf_count": 2,
+  "leaves": [
+    "d3e61342cace001d3019a30cfa50a88b372bada772a336df999370895290738f",
+    "da67cf98a290933d049a2566f2643d2bd3aeab76bf2bb821c61fddadbf3ab965"
+  ],
+  "root": "08c4eabdb92f1ebf16ad04efa7725aff876c4111a28163422fa2975b04744b3b"
+}

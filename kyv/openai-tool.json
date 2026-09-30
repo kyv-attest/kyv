@@ -1,0 +1,17 @@
+{
+  "type": "function",
+  "function": {
+    "name": "kyv_verify",
+    "description": "Fetch signed, banded, machine-verifiable operational facts about a company domain (the kyv-attest convention: /.well-known/attestations.json), plus mechanical observed facts (HTTPS reachability, first CT certificate, RDAP registration date, first Wayback capture). Returns facts only — no rankings, no scores, no recommendations. Values are bands (e.g. \">=85\"), never raw numbers. Absence of an attestation NEVER means negative: absence is non-adoption, not a signal.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "domain": {
+          "type": "string",
+          "description": "Public domain to verify, e.g. example.com"
+        }
+      },
+      "required": ["domain"]
+    }
+  }
+}

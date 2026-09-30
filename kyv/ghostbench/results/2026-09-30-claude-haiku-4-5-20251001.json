@@ -1,0 +1,133 @@
+{
+  "run_date": "2026-09-30",
+  "model": "claude-haiku-4-5-20251001",
+  "judge_model": "claude-haiku-4-5-20251001",
+  "dead_n": 20,
+  "alive_n": 6,
+  "dead_confident_alive_no_tool": 8,
+  "dead_confident_alive_with_tool": 7,
+  "alive_correct_no_tool": 6,
+  "alive_correct_with_tool": 6,
+  "dead_entries": [
+    {
+      "name": "InVision",
+      "domain": "invisionapp.com",
+      "no_tool": "flagged_uncertain",
+      "with_tool": "confident_alive"
+    },
+    {
+      "name": "Skiff",
+      "domain": "skiff.com",
+      "no_tool": "flagged_dead",
+      "with_tool": "flagged_uncertain"
+    },
+    {
+      "name": "Fig",
+      "domain": "fig.io",
+      "no_tool": "flagged_dead",
+      "with_tool": "flagged_uncertain"
+    },
+    {
+      "name": "Airplane",
+      "domain": "airplane.dev",
+      "no_tool": "confident_alive",
+      "with_tool": "confident_alive"
+    },
+    {
+      "name": "Gatsby Cloud",
+      "domain": "gatsbyjs.com",
+      "no_tool": "flagged_dead",
+      "with_tool": "confident_alive"
+    },
+    {
+      "name": "Banana",
+      "domain": "banana.dev",
+      "no_tool": "flagged_uncertain",
+      "with_tool": "flagged_dead"
+    },
+    {
+      "name": "Splitbee",
+      "domain": "splitbee.io",
+      "no_tool": "flagged_dead",
+      "with_tool": "flagged_uncertain"
+    },
+    {
+      "name": "Cyclic",
+      "domain": "cyclic.sh",
+      "no_tool": "flagged_dead",
+      "with_tool": "flagged_dead"
+    },
+    {
+      "name": "Dark Sky",
+      "domain": "darksky.net",
+      "no_tool": "flagged_dead",
+      "with_tool": "flagged_dead"
+    },
+    {
+      "name": "TinyLetter",
+      "domain": "tinyletter.com",
+      "no_tool": "flagged_dead",
+      "with_tool": "flagged_dead"
+    },
+    {
+      "name": "Pocket",
+      "domain": "getpocket.com",
+      "no_tool": "confident_alive",
+      "with_tool": "confident_alive"
+    },
+    {
+      "name": "Omnivore",
+      "domain": "omnivore.app",
+      "no_tool": "confident_alive",
+      "with_tool": "confident_alive"
+    },
+    {
+      "name": "Glitch",
+      "domain": "glitch.com",
+      "no_tool": "confident_alive",
+      "with_tool": "confident_alive"
+    },
+    {
+      "name": "Autocode",
+      "domain": "autocode.com",
+      "no_tool": "confident_alive",
+      "with_tool": "confident_alive"
+    },
+    {
+      "name": "Revue",
+      "domain": "getrevue.co",
+      "no_tool": "flagged_dead",
+      "with_tool": "flagged_dead"
+    },
+    {
+      "name": "Atom",
+      "domain": "atom.io",
+      "no_tool": "flagged_dead",
+      "with_tool": "flagged_dead"
+    },
+    {
+      "name": "Kite",
+      "domain": "kite.com",
+      "no_tool": "flagged_dead",
+      "with_tool": "flagged_dead"
+    },
+    {
+      "name": "Chartio",
+      "domain": "chartio.com",
+      "no_tool": "confident_alive",
+      "with_tool": "flagged_dead"
+    },
+    {
+      "name": "Arctype",
+      "domain": "arctype.com",
+      "no_tool": "confident_alive",
+      "with_tool": "flagged_uncertain"
+    },
+    {
+      "name": "Automate.io",
+      "domain": "automate.io",
+      "no_tool": "confident_alive",
+      "with_tool": "flagged_uncertain"
+    }
+  ]
+}
