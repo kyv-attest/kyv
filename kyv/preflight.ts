@@ -68,6 +68,7 @@ async function main(): Promise<void> {
   console.log(renderBrief(result));
 }
 
-if (process.argv[1]?.endsWith("preflight.ts")) {
+// Either extension — see the note in mcp-server.ts.
+if (/[/\\]preflight\.(ts|js)$/.test(process.argv[1] ?? "")) {
   void main();
 }

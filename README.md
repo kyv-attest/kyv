@@ -43,7 +43,30 @@ Witness states: `observed` (mechanical facts a verifier gathers — the default)
 read-only payment data). **Multiple issuers are welcome — the spec and the log are the root
 of trust, not any single key.** Full draft: [SPEC.md](SPEC.md).
 
-## Quickstart
+## Use it as an MCP server
+
+No clone, no build, no API key. The package has **zero runtime dependencies** —
+only Node built-ins — which is the point: a tool that tells you whether to trust
+someone else should not ask you to trust a dependency tree.
+
+```jsonc
+// Claude Desktop / Claude Code / any MCP client
+{
+  "mcpServers": {
+    "kyv": { "command": "npx", "args": ["-y", "kyv-attest-mcp"] }
+  }
+}
+```
+
+It exposes one tool, `verify(domain)`. It returns what the domain publishes and
+what can be observed about it, and nothing else: no ranking, no score, no
+recommendation, and no inference from absence.
+
+```bash
+npx -y kyv-attest verify ./attestations.json   # the CLI, same package
+```
+
+## Quickstart (from source)
 
 ```bash
 npm install         # or pnpm install

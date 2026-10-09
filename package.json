@@ -2,17 +2,56 @@
   "name": "kyv-attest",
   "version": "0.1.0",
   "license": "MIT",
-  "description": "Know Your Vendor \u2014 signed, banded, machine-verifiable operational facts at /.well-known/attestations.json",
+  "description": "Know Your Vendor — signed, banded, machine-verifiable operational facts at /.well-known/attestations.json",
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "mcp-server",
+    "attestation",
+    "verification",
+    "well-known",
+    "ed25519",
+    "transparency-log",
+    "vendor",
+    "agents"
+  ],
+  "homepage": "https://foundr.ventures/kyv",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyv-attest/kyv.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kyv-attest/kyv/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "kyv-attest": "dist/cli.js",
+    "kyv-attest-mcp": "dist/mcp-server.js"
+  },
+  "files": [
+    "dist",
+    "kyv/schema.json",
+    "kyv/openai-tool.json",
+    "SPEC.md",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "kyv": "tsx kyv/cli.ts",
     "kyv:mcp": "tsx kyv/mcp-server.ts",
     "kyv:preflight": "tsx kyv/preflight.ts",
     "ghostbench": "tsx kyv/ghostbench/run.ts",
+    "build": "esbuild kyv/cli.ts kyv/mcp-server.ts --bundle --platform=node --format=esm --target=node20 --outdir=dist --banner:js=\"#!/usr/bin/env node\" && chmod +x dist/cli.js dist/mcp-server.js",
+    "prepublishOnly": "pnpm test && pnpm build",
     "test": "vitest run"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.107.0",
     "@types/node": "^24.0.0",
+    "esbuild": "^0.28.2",
     "tsx": "^4.19.0",
     "vitest": "^4.1.0"
   },

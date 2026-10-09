@@ -132,6 +132,9 @@ function main(): void {
 }
 
 // Only start the stdio loop when executed directly, not when imported by tests.
-if (process.argv[1]?.endsWith("mcp-server.ts")) {
+// Match either extension: under tsx the entry is mcp-server.ts, in a published
+// build it is dist/mcp-server.js. Checking only ".ts" made every compiled
+// build a silent no-op — it started, read nothing, and exited 0.
+if (/[/\\]mcp-server\.(ts|js)$/.test(process.argv[1] ?? "")) {
   main();
 }
