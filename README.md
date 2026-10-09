@@ -15,7 +15,9 @@ We collected 20 verifiably shut-down SaaS products (shutdown-evidence URL per en
 alive controls, then asked models about each as if picking a vendor
 (`kyv/ghostbench/`, re-runnable):
 
-- **19 of 20 dead products' domains still return HTTP 200** — parked pages, farewell pages,
+- **19 of 20 dead products' domains still answer** (re-measured 2026-10-09,
+  redirects not followed: five bare 200s, thirteen redirects, one 503, one no
+  response) — parked pages, farewell pages,
   redirects. The web will not tell you a company died.
 - A frontier model (Claude Opus 4.8) flagged **20/20** dead with no tools — famous shutdowns
   are in the weights. (Documented bias: requiring verifiable death skews the set famous;
