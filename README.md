@@ -15,10 +15,10 @@ We collected 20 verifiably shut-down SaaS products (shutdown-evidence URL per en
 alive controls, then asked models about each as if picking a vendor
 (`kyv/ghostbench/`, re-runnable):
 
-- **19 of 20 dead products' domains still answer** (re-measured 2026-10-09,
+- **19 of 20 dead products' domains still answer.** Re-measured 2026-10-09 with
   redirects not followed: five bare 200s, thirteen redirects, one 503, one no
-  response) — parked pages, farewell pages,
-  redirects. The web will not tell you a company died.
+  response at all. Most hand you to an acquirer or a farewell page. The web will
+  not tell you a company died.
 - A frontier model (Claude Opus 4.8) flagged **20/20** dead with no tools — famous shutdowns
   are in the weights. (Documented bias: requiring verifiable death skews the set famous;
   real exposure is the long tail and post-cutoff shutdowns.)
@@ -95,8 +95,14 @@ npm test
 ## The first entry is unflattering on purpose
 
 The reference issuer's own attestation (`public/.well-known/attestations.json`) reads
-`mrr_usd: "<1000"`, continuity 0 months — the transparency log started 2026-09-30 and history
-cannot be backfilled. A verification convention that starts by flattering its author isn't one.
+`mrr_usd: "<1000"`. The transparency log started 2026-09-30 and history cannot be backfilled,
+so the continuity is however old the log is and no older. A verification convention that
+starts by flattering its author isn't one.
+
+It has already failed once in public: the document sat nine days stale and five from expiry
+while ten consecutive daily roots came out bit-identical, because nothing had re-signed it.
+Stamping was compounding; continuity was not. That is the failure mode this convention exists
+to make visible, and it was visible.
 
 Transparency log: daily Merkle roots + OpenTimestamps receipts live in
 [`kyv-attest/log`](https://github.com/kyv-attest/log).
