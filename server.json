@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.kyv-attest/kyv",
+  "description": "One tool: verify(domain). Returns signed, banded, machine-verifiable operational facts a company publishes at its own /.well-known/attestations.json, plus mechanical observed facts. Facts only — no rankings, no scores. Absence never means negative.",
+  "websiteUrl": "https://foundr.ventures/kyv",
+  "repository": {
+    "url": "https://github.com/kyv-attest/kyv",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "kyv-attest",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
